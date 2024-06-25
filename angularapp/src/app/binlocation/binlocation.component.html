@@ -1,0 +1,92 @@
+
+<div class="row">
+    <div class="col-md-8">
+        <span class="list">
+            Form-List
+        </span>
+        <div class="border p-2 rounded-4">
+            <table class="table table-bordared">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Store Name</th>
+                        <th> Location ID</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let store of storeNames; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{store.storename}}</td>
+                        <td>{{store.locationid}}</td>   
+                        <td> <button type="button" class="btn btn-primary" (click)="OnEdit(store, i)">Edit</button> </td>
+                        <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                       </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+    <div class="col-md-4">
+        <h2>BinLocatiob</h2>
+        <div class="row justify-content-right">
+            <form class="border p-4 rounded-4" [formGroup]="binLocationForm" (ngSubmit)="AddNew()">
+                <div>
+                    <span >
+                        <button class="button">&times;</button>
+                    </span>
+                </div>
+                <div class="col mb-3 bg-black">
+                    <span class="a1">
+                        * Bin Location
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="col mb-6">
+                        <label for="">Reference for GST</label>
+                        <select  id="storename" class="form-control" placeholder="storename" formControlName="storename">
+                            <option value="Select">--Select--</option>
+                            <option value="b1">B1</option>
+                            <option value="b2">B2</option>
+                            <option value="b3">B3</option>
+                            <option value="b4">B4</option>
+                            <option value="b5">B5</option>
+                            <option value="b6">B6</option>
+                            <option value="b7">B7</option>
+                            <option value="b8">B8</option>
+                            <option value="b9">B9</option>
+                            <option value="b10">B10</option>
+                           
+                        </select>
+                            <small class="text-danger"
+                            *ngIf="!binLocationForm.get('storename').valid && binLocationForm.get('storename').touched">
+                            <small *ngIf="binLocationForm.get('storename').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="locationid" class="form-label">Location ID</label>
+                        <input type="text" class="form-control" id="locationid" formControlName="locationid" />
+                        <small class="text-danger"
+                            *ngIf="!binLocationForm.get('locationid').valid && binLocationForm.get('locationid').touched">
+                            <small *ngIf="binLocationForm.get('locationid').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+              
+                <br>
+                <div class="border p-1 rounded-3 border-black">
+                    
+                    <span id="btn">
+                        <button type="button" class="btn btn-primary" (click)="AddNew()"
+                            [disabled]="binLocationForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                        &nbsp; &nbsp;
+                    </span>
+                </div>
+                </form>
+        </div>
+    </div>
+    </div>
+        
+    

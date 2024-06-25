@@ -1,0 +1,309 @@
+<div class="row">
+    <div class="col-md-12">
+    <span class="list">
+        Form-List
+    </span>
+    <div class="border p-2 rounded-4">
+        <table class="table table-bordared">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Brand Name</th>
+                    <th>Bar Code</th>
+                    <th>Category</th>
+                    <th>HSN/SAC Code</th>
+                    <th>E.D.P. No.</th>
+                    <th>Party EDP/Item Code No.</th>
+                    <th>Description</th>
+                    <th>Tally Item Description</th>
+                    <th>Cost Center</th>
+                    <th>Bin Location</th> 
+                    <th>Total Stock</th>
+                    <th>Out Sourced Stock</th>
+                    <th>Measurement Unit</th>
+                    <th>Sales Price</th>    
+                    <th>Re-Order Level</th>      
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr *ngFor="let cost of costCenter; index as i">
+                    <td>{{i+1}}</td>
+                    <td>{{cost.brandname}}</td>
+                    <td>{{cost.barcode}}</td>
+                    <td>{{cost.category}}</td>
+                    <td>{{cost.hsncode}}</td>
+                    <td>{{cost.edpno}}</td>
+                    <td>{{cost.partycodeno}}</td>
+                    <td>{{cost.description}}</td>
+                    <td>{{cost.tallyitem}}</td>
+                    <td>{{cost.costcenter}}</td>
+                    <td>{{cost.blocation}}</td>
+                    <td>{{cost.totalstock}}</td>
+                    <td>{{cost.outstock}}</td>
+                    <td>{{cost.measurement}}</td>
+                    <td>{{cost.saleprice}}</td>
+                    <td>{{cost.reorder}}</td>
+
+                    <td> <button type="button" class="btn btn-primary" (click)="OnEdit(cost, i)">Edit</button> </td>
+                    <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                   </tr>
+            </tbody>
+        </table>
+        </div>
+</div>
+    <div class="col-md-6">
+    <h2>Item Info -> Boughtout Item</h2>
+
+            <div class="justify-content-right">
+                <form class="border p-2 rounded-4" [formGroup]="boughtoutForm" (ngSubmit)="AddNew()">
+                    <div>
+                        <span >
+                            <button class="button">&times;</button>
+                        </span>
+                    </div>
+                    <div class="col mb-3 bg-black">
+                        <span class="a1">
+                            * Item Information
+                        </span>
+                    </div>
+                <hr>
+                <header class="headers" >
+                    <nav>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/productionitem">Production Item</a></li>
+                            <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="boughtitem/">Bought Item (Consumables)</a></li>
+                            <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/jobwork">Jobwork Item</a></li> 
+                            <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/capitalgood">Capital Goods</a></li>  
+ 
+                        </ul>
+                    </nav>
+                </header> 
+                <hr>
+                
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="brandname" class="form-label">Brand Name</label>
+                            <input type="text" class="form-control" id="brandname" formControlName="brandname" />
+                            <small class="text-danger"
+                                *ngIf="!boughtoutForm.get('brandname').valid && boughtoutForm.get('brandname').touched">
+                                <small *ngIf="boughtoutForm.get('brandname').errors['required']">This field is
+                                    required</small>
+                            </small>
+                            <!-- </div> -->
+                        </div>
+    
+                        <!-- <div class="row"> -->
+                        <div class="col mb-3">
+                            <label for="barcode" class="form-label">Bar Code</label>
+                            <input type="text" class="form-control" id="barcode" formControlName="barcode">
+                            <small class="text-danger"
+                                *ngIf="!boughtoutForm.get('barcode').valid && boughtoutForm.get('barcode').touched">
+                                <small *ngIf="boughtoutForm.get('barcode').errors['required']">This field is
+                                    required</small>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <input type="text" class="form-control" id="category" formControlName="category" />
+                            <small class="text-danger"
+                                *ngIf="!boughtoutForm.get('category').valid && boughtoutForm.get('category').touched">
+                                <small *ngIf="boughtoutForm.get('category').errors['required']">This field is
+                                    required</small>
+                            </small>
+                            <!-- </div> -->
+                        </div>
+    
+                        <!-- <div class="row"> -->
+                        <div class="col mb-3">
+                            <label for="hsncode" class="form-label">HSN/SAC Code</label>
+                            <input type="number" class="form-control" id="hsncode" formControlName="hsncode">
+                            <small class="text-danger"
+                                *ngIf="!boughtoutForm.get('hsncode').valid && boughtoutForm.get('hsncode').touched">
+                                <small *ngIf="boughtoutForm.get('hsncode').errors['required']">This field is
+                                    required</small>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="edpno" class="form-label">E.D.P. No.</label>
+                            <input type="text" class="form-control" id="edpno" formControlName="edpno" />
+                            <small class="text-danger"
+                                *ngIf="!boughtoutForm.get('edpno').valid && boughtoutForm.get('edpno').touched">
+                                <small *ngIf="boughtoutForm.get('edpno').errors['required']">This field is
+                                    required</small>
+                            </small>
+                            <!-- </div> -->
+                        </div>
+    
+                        <!-- <div class="row"> -->
+                        <div class="col mb-3">
+                            <label for="partycodeno" class="form-label">Party EDP/Item Code No.</label>
+                            <input type="text" class="form-control" id="partycodeno" formControlName="partycodeno">
+                            <small class="text-danger"
+                                *ngIf="!boughtoutForm.get('partycodeno').valid && boughtoutForm.get('partycodeno').touched">
+                                <small *ngIf="boughtoutForm.get('partycodeno').errors['required']">This field is
+                                    required</small>
+                            </small>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="description" class="form-label" >Description</label>
+                        <input type="text" class="form-control" id="description" style="background-color: rgb(240, 240, 145);" formControlName="description" />
+                        <small class="text-danger"
+                        *ngIf="!boughtoutForm.get('description').valid && boughtoutForm.get('description').touched">
+                        <small *ngIf="boughtoutForm.get('description').errors['required']">This field is required</small>
+                    </small>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="tallyitem" class="form-label">Tally Item Deacription</label>
+                        <input type="text" class="form-control" id="tallyitem" style="background-color: rgb(240, 240, 145);" formControlName="tallyitem" />
+                        <small class="text-danger"
+                            *ngIf="!boughtoutForm.get('tallyitem').valid && boughtoutForm.get('tallyitem').touched">
+                            <small *ngIf="boughtoutForm.get('tallyitem').errors['required']">This field is
+                                required</small>
+                        </small>
+                        <!-- </div> -->
+                    </div>
+
+                    <!-- <div class="row"> -->
+                        <div class="col mb-3">
+                            <label for="costcenter">Cost Center</label>
+                            <select  id="costcenter" class="form-control" placeholder="costcenter" formControlName="costcenter">
+                                <option value="Select">--Select--</option>
+                                <option value="trading">Trading</option>
+                                <option value="tool">Tool And Cutter</option>
+                                <option value="vmc">VMC</option>
+                                <option value="hmc">HMC</option>
+                                <option value="cnc">CNC</option> 
+                            </select>
+                                <small class="text-danger"
+                                *ngIf="!boughtoutForm.get('costcenter').valid && boughtoutForm.get('costcenter').touched">
+                                <small *ngIf="boughtoutForm.get('costcenter').errors['required']">This field is required</small>
+                            </small>
+                        </div>
+                </div>
+                <div class="row-justify-content-right">
+                    <div class="form-check">
+                        <label for="raw" class="form-check-label">Uas as RAW Material</label>
+                        <input type="checkbox" class="form-check-input" id="raw" FormControlName="raw"
+                            placeholder="Enter Password">
+                        <!-- <small class="text-danger" *ngIf="!currencyForm.get('checkbox1').valid && currencyForm.get('examplecheck1').touched"> </small> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="blocation" class="form-label">Bin Location</label>
+                        <input type="text" class="form-control" id="blocation" formControlName="blocation">
+                        <small class="text-danger"
+                            *ngIf="!boughtoutForm.get('blocation').valid && boughtoutForm.get('blocation').touched">
+                            <small *ngIf="boughtoutForm.get('blocation').errors['required']">This field is
+                                required</small>
+                        </small>
+                    </div>
+
+                    <!-- <div class="row"> -->
+                    <div class="col mb-3">
+                        <label for="totalstock" class="form-label">total Stock</label>
+                        <input type="number" class="form-control" id="totalstock" formControlName="totalstock">
+                        <small class="text-danger"
+                            *ngIf="!boughtoutForm.get('totalstock').valid && boughtoutForm.get('totalstock').touched">
+                            <small *ngIf="boughtoutForm.get('totalstock').errors['required']">This field is
+                                required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="outstock" class="form-label">Out Sourced Stock</label>
+                        <input type="number" class="form-control" id="outstock" formControlName="outstock" />
+                        <small class="text-danger"
+                            *ngIf="!boughtoutForm.get('outstock').valid && boughtoutForm.get('outstock').touched">
+                            <small *ngIf="boughtoutForm.get('outstock').errors['required']">This field is
+                                required</small>
+                        </small>
+                        <!-- </div> -->
+                    </div>
+
+                    <!-- <div class="row"> -->
+                        <div class="col mb-3">
+                            <label for="measurement" class="form-label">Measurement Unit</label>
+                            <input type="text" class="form-control" id="measurement" formControlName="measurement" />
+                            <small class="text-danger"
+                                *ngIf="!boughtoutForm.get('measurement').valid && boughtoutForm.get('measurement').touched">
+                                <small *ngIf="boughtoutForm.get('measurement').errors['required']">This field is
+                                    required</small>
+                            </small>
+                            
+                        </div>    
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <label for="purchase" class="form-label">Purchase Price</label>
+                        <input type="number" class="form-control" id="purchase" formControlName="purchase" />
+                        <small class="text-danger"
+                            *ngIf="!boughtoutForm.get('purchase').valid && boughtoutForm.get('purchase').touched">
+                            <small *ngIf="boughtoutForm.get('purchase').errors['required']">This field is
+                                required</small>
+                        </small>
+                    </div>
+                    <div class="col mb-2">
+                        <label for="saleprice" class="form-label">Sale Price</label>
+                    <input type="number" class="form-control" id="saleprice" formControlName="saleprice">
+                    <small class="text-danger"
+                        *ngIf="!boughtoutForm.get('saleprice').valid && boughtoutForm.get('saleprice').touched">
+                        <small *ngIf="boughtoutForm.get('saleprice').errors['required']">This field is
+                            required</small>
+                    </small>
+                    </div>
+                  
+                    <!-- <div class="row-justify-content-right" -->
+                    <div class="col mb-2">
+                        <label for="reorder" class="form-label">Re-Order Level</label>
+                        <input type="number" class="form-control" id="reorder" formControlName="reorder">
+                        <small class="text-danger"
+                            *ngIf="!boughtoutForm.get('reorder').valid && boughtoutForm.get('reorder').touched">
+                            <small *ngIf="boughtoutForm.get('reorder').errors['reorder']">This field is
+                                required</small>
+                        </small>
+                    </div>
+                    </div>
+                    <br>
+                    <div class="row-justify-content-right">
+                        <div class="form-check">
+                            <label for="inventory" class="form-check-label">Maintain Inventory</label>
+                            <input type="checkbox" class="form-check-input" id="inventory" FormControlName="inventory"
+                                placeholder="Enter Password">
+                            <!-- <small class="text-danger" *ngIf="!currencyForm.get('checkbox1').valid && currencyForm.get('examplecheck1').touched"> </small> -->
+                        </div>
+                    </div>
+                    <div class="row-justify-content-right">
+                        <div class="form-check">
+                            <label for="billing" class="form-check-label">Direct Billing can be done  of this item</label>
+                            <input type="checkbox" class="form-check-input" id="billing" FormControlName="billing"
+                                placeholder="Enter Password">
+                            <!-- <small class="text-danger" *ngIf="!currencyForm.get('checkbox1').valid && currencyForm.get('examplecheck1').touched"> </small> -->
+                        </div>
+                    </div>
+                    <br>
+                    <div class="border p-1 rounded-3 border-black">
+                   
+                        <span id="btn">
+                            <button type="button" class="btn btn-primary" (click)="AddNew()"
+                                [disabled]="boughtoutForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                            &nbsp; &nbsp;
+                            
+                        </span>
+                    </div>
+                
+                    </form>
+        </div>
+    </div>
+    
+<router-outlet></router-outlet>

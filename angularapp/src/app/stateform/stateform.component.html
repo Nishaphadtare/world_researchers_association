@@ -1,0 +1,103 @@
+<!-- <p>currencyform works!</p> -->
+<div class="row">
+    <div class="col-md-6">
+    <span class="list">
+        Form-List
+    </span>
+    <div class="border p-2 rounded-4">
+        <table class="table table-bordared">
+
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Country</th>
+                                <th>GST Code</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr *ngFor="let con of countries; index as i">
+                                <td>{{con.name}}</td>
+                                <td>{{con.country}}</td>
+                                <td>{{con.gstcode}}</td>
+                                <td> <button type="button" class="btn btn-primary" (click)="OnEdit(con, i)">Edit</button> </td>
+                                <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    </div>
+  
+                    <div class="col-md-4">
+                        <h2>State Form</h2>
+        <form class="border p-4 rounded-4 ml-3" [formGroup]="stateForm" (ngSubmit)="AddNew()">
+            <div>
+                <span>
+                    <button class="button">&times;</button>
+                </span>
+            </div>
+            <div class="col text-left p-2 mb-3 bg-black">
+                <span class="a1">
+                    * State
+                </span>
+            </div>
+
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" formControlName="name" />
+                    <small class="text-danger"
+                        *ngIf="!stateForm.get('name').valid && stateForm.get('name').touched">
+                        <small *ngIf="stateForm.get('name').errors['required']">This field is required</small>
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="country">Country</label>
+                    <select id="country" formControlName="country" class="form-control">
+                        <option value="country" *ngFor="let co of countries" [value]="co.country">{{co.country}}
+                       </option> <!--  *ngFor="let co of countries" [value]="co.statename" -->
+                        <option value="India">India</option>
+                        <option value="USA">USA</option>
+                        <option value="Japan">Japan</option>
+                        <option value="US">US</option>
+                        <small class="text-danger"
+                            *ngIf="!stateForm.get('country').valid && stateForm.get('country').touched">
+                            <small *ngIf="stateForm.get('country').errors['required']">This field is required</small>
+                        </small>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <label for="gstcode" class="form-label">GST Code</label>
+                    <input type="number" class="form-control" id="gstcode" formControlName="gstcode" />
+                    <small class="text-danger"
+                        *ngIf="!stateForm.get('gstcode').valid && stateForm.get('gstcode').touched">
+                        <small *ngIf="stateForm.get('gstcode').errors['required']">This field is required</small>
+                    </small>
+                </div>
+            </div>
+            <div class="row-justify-content-right">
+                <div class="form-check">
+                    <label for="StateCheck" class="form-check-label">Set as Local State</label>
+                    <input type="checkbox" class="form-check-input" id="StateCheck" FormControlName="StateCheck">
+                    <!-- <small class="text-danger" *ngIf="!currencyForm.get('checkbox1').valid && currencyForm.get('examplecheck1').touched"> </small> -->
+                </div>
+            </div>
+
+            <br>
+                <div class="border p-1 rounded-3 border-black">
+                    
+                    <span id="btn">
+                        <button type="button" class="btn btn-primary" (click)="AddNew()"
+                            [disabled]="stateForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                        &nbsp; &nbsp;
+                    </span>
+                </div>
+        </form>
+
+
+                     </div>
+                </div>
+          

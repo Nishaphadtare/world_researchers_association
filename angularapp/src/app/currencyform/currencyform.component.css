@@ -1,0 +1,67 @@
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+    box-shadow: 0 0 13px red
+}
+
+form{
+    width: 500px;
+    background: rgb(172, 170, 170);
+    /* margin-left: 1300px;    */
+    
+}
+
+h2{
+    text-align: center;
+    /* margin-left: 1300px; */
+    padding-left: 5px;
+
+}
+
+
+.button{
+    margin-left: 420px;
+    background-color: transparent;
+    width: 50px;
+    border: 0;
+    cursor: pointer;
+    margin-bottom: 20px;
+    size: 10px;
+}
+:hover.button{
+    background-color: rgba(246, 22, 59, 0.93);
+    color: white;
+} 
+#btn{
+    margin-top: 10px;
+    border-color: black;
+    padding-left: 20px;
+    /* row-gap: 10px; */
+}
+.a1{
+    background-color: rgba(0, 0, 0, 0.467);
+    color: white;    
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    align-content: baseline;
+    
+  }
+  
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+.list{
+    background-color: black;
+    color: white;
+    font-size: larger;
+    margin-bottom: 10px;
+}
+

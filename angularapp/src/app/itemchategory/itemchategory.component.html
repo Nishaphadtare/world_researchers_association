@@ -1,0 +1,162 @@
+
+<div class="row">
+    <div class="col-md-8">
+        <span class="list">
+            Form-List
+        </span>
+        <div class="border p-2 rounded-4">
+            <table class="table table-bordared">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Store Name</th>
+                        <th>HNS/SAC Code</th>
+                        <th>Tax Application</th>
+                        <th>S.G.S.T.%</th>
+                        <th>C.G.S.T.%</th>
+                        <th>I.G.S.T.%</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let tax of taxArr; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{tax.description}}</td>
+                        <td>{{tax.hsncode}}</td>
+                        <td>{{tax.taxapplicable}}</td>   
+                        <td>{{tax.sgst}}</td>   
+                        <td>{{tax.cgst}}</td>   
+                        <td>{{tax.igst}}</td>   
+                          
+                        <td> <button type="button" class="btn btn-primary" (click)="OnEdit(tax, i)">Edit</button> </td>
+                        <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                       </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+    <div class="col-md-4">
+    <h2>Item Category</h2>
+    <div class="container">
+    <div class="row justify-content-right">
+        <form class="border p-4 rounded-4" [formGroup]="itemChategoryForm" (ngSubmit)="AddNew()">
+            <div>
+                <span >
+                    <button class="button">&times;</button>
+                </span>
+            </div>
+            <div class="col mb-3 bg-black">
+                <span class="a1">
+                    * Item Category
+                </span>
+            </div>
+
+            <div class="row">
+                <div class="col mb-4">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description"  formControlName="description" />
+                    <small class="text-danger"
+                        *ngIf="!itemChategoryForm.get('description').valid && itemChategoryForm.get('description').touched">
+                        <small *ngIf="itemChategoryForm.get('description').errors['required']">This field is required</small>
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-4">
+                    <label for="hsncode" class="form-label">HSN/SAC Code</label>
+                    <input type="number" class="form-control" id="hsncode" formControlName="hsncode" />
+                    <small class="text-danger" *ngIf="!itemChategoryForm.get('hsncode').valid && itemChategoryForm.get('hsncode').touched">
+                        <small *ngIf="itemChategoryForm.get('hsncode').errors['required']">This field is required</small>
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-6">
+                    <label for="taxapplicable">Reference for GST</label>
+                    <select  id="taxapplicable" class="form-control" placeholder="taxapplicable" formControlName="taxapplicable">
+                        <option value="Select">--Select--</option>
+                        <option value="gst@10%">GST@9%</option>
+                        <option value="gst@12%">GST@12%</option>
+                        <option value="gst@15%">GST@15%</option>
+                        <option value="gst@20%">GST@20%</option>
+                        <option value="gst@25%">GST@25%</option>
+                        <option value="gst@30%">GST@30%</option>
+                        <option value="gst@35%">GST@35%</option>
+                        <option value="gst@40%">GST@40%</option>
+                        <option value="gst@42%">GST@42%</option>
+                        <option value="gst@45%">GST@45%</option>
+                        <option value="gst@50%">GST@50%</option>
+                        <option value="gst@52%">GST@52%</option>
+                        <option value="gst@55%">GST@55%</option>
+                        <option value="gst@60%">GST@60%</option>
+                        <option value="gst@62%">GST@62%</option>
+                        <option value="gst@65%">GST@65%</option>
+                        <option value="gst@68%">GST@68%</option>
+                        <option value="gst@70%">GST@70%</option>
+                        <option value="gst@72%">GST@72%</option>
+                        <option value="gst@75%">GST@75%</option>
+                        <option value="gst@77%">GST@77%</option>
+                        <option value="gst@80%">GST@80%</option>
+                        <option value="gst@82%">GST@82%</option>
+                        <option value="gst@85%">GST@85%</option>
+                        <option value="gst@90%">GST@90%</option>
+                        <option value="gst@92%">GST@92%</option>
+                        <option value="gst@97%">GST@97%</option>
+                        <option value="gst@100%">GST@100%</option>
+                       
+                    </select>
+                        <small class="text-danger"
+                        *ngIf="!itemChategoryForm.get('taxapplicable').valid && itemChategoryForm.get('taxapplicable').touched">
+                        <small *ngIf="itemChategoryForm.get('taxapplicable').errors['required']">This field is required</small>
+                    </small>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col mb-2">
+                    <label for="sgst" class="form-label">S.G.S.T.%</label>
+                    <input type="number" class="form-control" id="sgst" formControlName="sgst" />
+                    <small class="text-danger"
+                        *ngIf="!itemChategoryForm.get('sgst').valid && itemChategoryForm.get('sgst').touched">
+                        <small *ngIf="itemChategoryForm.get('sgst').errors['required']">This field is
+                            required</small>
+                    </small>
+                </div>
+
+                <div class="col mb-2">
+                    <label for="cgst" class="form-label">C.G.S.T.%</label>
+                    <input type="number" class="form-control" id="cgst" formControlName="cgst">
+                    <small class="text-danger"
+                        *ngIf="!itemChategoryForm.get('cgst').valid && itemChategoryForm.get('cgst').touched">
+                        <small *ngIf="itemChategoryForm.get('cgst').errors['required']">This field is
+                            required</small>
+                    </small>
+                </div>
+
+                <div class="col mb-2">
+                    <label for="igst" class="form-label">I.G.S.T.%</label>
+                    <input type="number" class="form-control" id="igst" formControlName="igst">
+                    <small class="text-danger"
+                        *ngIf="!itemChategoryForm.get('igst').valid && itemChategoryForm.get('igst').touched">
+                        <small *ngIf="itemChategoryForm.get('igst').errors['required']">This field is
+                            required</small>
+                    </small>
+                </div>
+
+            </div>
+
+            <br>
+                <div class="border p-1 rounded-3 border-black">
+                    
+                    <span id="btn">
+                        <button type="button" class="btn btn-primary" (click)="AddNew()"
+                            [disabled]="itemChategoryForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                        &nbsp; &nbsp;
+                    </span>
+                </div>
+            </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    

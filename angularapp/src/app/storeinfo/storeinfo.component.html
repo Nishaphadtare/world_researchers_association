@@ -1,0 +1,101 @@
+
+<div class="row">
+    <div class="col-md-8">
+        <span class="list">
+            Form-List
+        </span>
+        <div class="border p-2 rounded-4">
+            <table class="table table-bordared">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Store Name</th>
+                        <th>Under Department</th>
+                        <th>Store Inchange</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let store of departments; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{store.storename}}</td>
+                        <td>{{store.department}}</td>
+                        <td>{{store.storeincharge}}</td>
+                        
+                        <td> <button type="button" class="btn btn-primary" (click)="OnEdit(store, i)">Edit</button> </td>
+                        <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                       </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+    
+    <div class="col-md-4">   
+        <h2>Store Location </h2>
+        <div class="row justify-content-right">
+            <form class="border p-4 rounded-4" [formGroup]="storeInfoForm" (ngSubmit)="AddNew()">
+                <div>
+                    <span >
+                        <button class="button">&times;</button>
+                    </span>
+                </div>
+                <div class="col mb-3 bg-black">
+                    <span class="a1">
+                        * Store Location
+                    </span>
+                </div>
+    
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="storename" class="form-label">Store Name</label>
+                        <input type="text" class="form-control" id="storename" formControlName="storename" />
+                        <small class="text-danger"
+                            *ngIf="!storeInfoForm.get('storename').valid && storeInfoForm.get('storename').touched">
+                            <small *ngIf="storeInfoForm.get('storename').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-6">
+                        <label for="department">Under Department</label>
+                        <select  id="department" class="form-control" placeholder="department" formControlName="department">
+                            <option value="Select">--Select--</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="IT">IT</option>
+                            <option value="Finance">Finance</option>
+                            <option value="HumanResource">Human Resource</option>
+                            <option value="sales">sales</option>
+                            <option value="QualityManagement">Quality Management</option>
+                            <option value="technology">Technology</option>
+                            <option value="purchasing">Purchasing</option>
+                        </select>
+                            <small class="text-danger"
+                            *ngIf="!storeInfoForm.get('department').valid && storeInfoForm.get('department').touched">
+                            <small *ngIf="storeInfoForm.get('department').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="storeincharge" class="form-label">Store Incharge</label>
+                        <input type="text" class="form-control" id="storeincharge" formControlName="storeincharge" />
+                        <small class="text-danger"*ngIf="!storeInfoForm.get('storeincharge').valid && storeInfoForm.get('storeincharge').touched">
+                            <small *ngIf="storeInfoForm.get('storeincharge').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                
+                <br>
+                <div class="border p-1 rounded-3 border-black">
+                    
+                    <span id="btn">
+                        <button type="button" class="btn btn-primary" (click)="AddNew()"
+                            [disabled]="storeInfoForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                        &nbsp; &nbsp;
+                    </span>
+                </div>
+            </form>
+       
+                    </div>
+                </div>
+  </div>

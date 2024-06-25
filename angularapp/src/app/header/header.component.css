@@ -1,0 +1,30 @@
+.container{
+    background-color: rgb(37, 131, 224);
+    display: flex;
+    /* position:fixed; */
+    top: 0px;
+    /* width: 100px; */
+    
+}
+
+.item{
+    color: white;
+    /* margin-top: 20px; */
+    text-align: center;
+    display: block;
+}
+marquee{
+    color: black;
+    background-color: white;
+}
+/* h1{
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h5{
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+} */

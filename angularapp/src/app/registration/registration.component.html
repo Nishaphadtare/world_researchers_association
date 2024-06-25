@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="col-md-12 justify">
+<form [formGroup]="registerForm" (ngSubmit)="OnSubmitted()" class="border p-3 rounded-3">
+    <div class="row g-0">
+        <div class="col text-center p-2 mb-3 bg-light">
+            <span class="fs-3">Register</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+            <label for="firstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstname" formControlName="firstname" placeholder="Enter FirstName">
+         <small class="text-danger" *ngIf="!registerForm.get('firstname').valid && registerForm.get('firstname').touched">
+            <small  *ngIf="registerForm.get('firstname').errors['required']">Please Enter Firstname</small>
+        </small> 
+        </div>
+        <div class="col mb-3">
+            <label for="lastname" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastname" formControlName="lastname" placeholder="Enter LastName">
+            <small class="text-danger" *ngIf="!registerForm.get('lastname').valid && registerForm.get('lastname').touched">
+                <small  *ngIf="registerForm.get('lastname').errors['required']">Please Enter Lastname</small>
+            </small> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="com mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" #email placeholder="Enter Email">
+            <div class="form-text"></div>
+            <small class="text-danger" *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched">
+                <small  *ngIf="registerForm.get('email').errors['required']">Please Enter valid email</small>
+            </small> 
+        </div>
+    </div>
+    <div class="row">
+       <div class="col mb-3">
+            <label for="mobile" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" id="mobile" formControlName="mobile" placeholder="Enter Mobile Number">
+        <div class="form-text"></div>
+        <small class="text-danger" *ngIf="!registerForm.get('mobile').valid && registerForm.get('mobile').touched">
+            <small  *ngIf="registerForm.get('mobile').errors['required']">Please Enter name</small>
+        </small> 
+       </div>
+       <div class="col ps-3 mb-3">
+        <div class="m-1">Gender</div>
+        <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" value="male" id="male" formControlName="gender">
+            <label for="male" class="form-check-lable">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input type="radio" class="form-check-input" value="female" id="female" formControlName="gender">
+            <label for="female" class="form-check-lable">Female</label>
+        </div>
+       </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3">
+             <label for="pwd" class="form-label">Password</label>
+             <input type="password" class="form-control" id="pwd" formControlName="pwd" placeholder="Enter password">
+         <div class="form-text"></div>
+         <small class="text-danger" *ngIf="!registerForm.get('pwd').valid && registerForm.get('pwd').touched">
+            <small  *ngIf="registerForm.get('pwd').errors['required']">Please Enter password</small>
+        </small>
+        </div>
+        <div class="col mb-3">
+            <label for="rpwd" class="form-lable">Repeat Password</label>
+             <input type="password" class="form-control" id="rpwd" formControlName="rpwd" placeholder="Enter Repeated password">
+             <div class="form-text"></div>
+             <small class="text-danger" *ngIf="!registerForm.get('rpwd').valid && registerForm.get('rpwd').touched">
+                <small  *ngIf="registerForm.get('rpwd').errors['required']">Please repeat password</small>
+            </small>
+         </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="d-grid">
+                    <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <small>Already have Account?<a routerLink="../login" >Login</a></small>
+        </div>
+</form>
+</div>
+</div>

@@ -1,0 +1,92 @@
+<!-- <p>brandname works!</p> -->
+
+<div class="row">
+    <div class="col-md-8">
+        <span class="list">
+            Form-List
+        </span>
+        <div class="border p-2 rounded-4">
+            <table class="table table-bordared">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ref. Code</th>
+                        <th>Brand Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let brand of brandNames; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{brand.refcode}}</td>
+                        <td>{{brand.brandname}}</td>
+                        <td> <button type="button" class="btn btn-primary" (click)="OnEdit(brand, i)">Edit</button> </td>
+                        <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                       </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+    <div class="col-md-4">
+    <h2>Brand Name</h2>
+    <div class="row justify-content-right">
+        <form class="border p-4 rounded-4" [formGroup]="brandNameForm" (ngSubmit)="AddNew()">
+            <div>
+                <span >
+                    <button class="button">&times;</button>
+                </span>
+            </div>
+            <div class="col mb-3 bg-black">
+                <span class="a1">
+                    * Manufacture (Brand)
+                </span>
+            </div>
+
+            <div class="row">
+                <div class="col mb-4">
+                    <label for="refcode" class="form-label">Ref.Code</label>
+                    <input type="text" class="form-control" id="refcode" style="background-color: rgb(240, 240, 145);" formControlName="refcode" />
+                    <small class="text-danger"
+                        *ngIf="!brandNameForm.get('refcode').valid && brandNameForm.get('refcode').touched">
+                        <small *ngIf="brandNameForm.get('refcode').errors['required']">This field is required</small>
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-6">
+                    <label for="">Brand Names</label>
+                    <select  id="brandname" class="form-control" placeholder="brandname" formControlName="brandname">
+                        <option value="Select">--Select--</option>
+                        <option value="accurate">ACCURATE SOLUTION</option>
+                        <option value="understanding">UNDERSTANDING</option>
+                        <option value="special">SPECIAL CONSIDERATION</option>
+             
+                       
+                    </select>
+                        <small class="text-danger"
+                        *ngIf="!brandNameForm.get('brandname').valid && brandNameForm.get('brandname').touched">
+                        <small *ngIf="brandNameForm.get('brandname').errors['required']">This field is required</small>
+                    </small>
+                </div>
+            </div>
+<br>
+            <div class="row-justify-content-right">
+                <div class="form-check">
+                    <label for="checkdeleted" class="form-check-label">Is Deleted ?</label>
+                    <input type="checkbox" class="form-check-input" id="checkdeleted" FormControlName="checkdeleted"
+                        placeholder="Enter Password">
+                    <!-- <small class="text-danger" *ngIf="!currencyForm.get('checkbox1').valid && currencyForm.get('examplecheck1').touched"> </small> -->
+                </div>
+            </div>
+            <div class="border p-1 rounded-3 border-black">
+                    
+                <span id="btn">
+                    <button type="button" class="btn btn-primary" (click)="AddNew()"
+                        [disabled]="brandNameForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                    &nbsp; &nbsp;
+                </span>
+            </div>
+            </form>
+    </div>
+    </div>
+    </div>

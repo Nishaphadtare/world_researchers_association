@@ -1,0 +1,162 @@
+<!-- <p>currencyform works!</p> -->
+<section class="side-banner">
+    <div class="continer">
+    <!-- Table -->
+            <div class="col-md-8">
+                <div class="row justify-content-left">
+                    <div class="col text-left p-3 mb-3">
+                        <span class="list">
+                            Form-List
+                        </span>
+                        <div class="border p-2 rounded-4">
+                            <table class="table table-bordared">
+                                <thead>
+                                    <tr>
+                                        <th>Employee No.</th>
+                                        <th>Designation</th>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>Phone No</th>
+                                        <th>Mobile No</th>
+                                        <th>Email Id</th>
+                                        <th>Date of Joining</th>
+                                        <th>Department</th>
+                                     
+                                        
+                                        <th colspan="border">Buttons</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr *ngFor="let user of adduser; index as i">
+                                        <td>{{user.currency}}</td>
+                                        <td>{{user.change}}</td>
+                                        <td>{{user.shortname}}</td>
+                                        <td>{{user.purchaseprice}}</td>
+                                        <td>{{user.saleprice}}</td>
+                                        <td> <button type="button" class="btn btn-primary" (click)="OnEdit(user.userId,i)">Edit</button> </td>
+                                        <td> <button type="button" class="btn btn-danger" (click)="OnDelete(user.userId,i)">Delete</button> </td>
+                                       </tr>
+                                </tbody>
+                            </table>
+                            </div>
+         <h2>Employee Details</h2>
+        <div class="row justify-content-right">
+            <form class="border p-4 rounded-4" [formGroup]="EmployeeForm" (ngSubmit)="AddNew()">
+                <div>
+                    <span >
+                        <button class="button">&times;</button>
+                    </span>
+                </div>
+                <div class="col mb-3 bg-black">
+                    <span class="a1">
+                        * Employee Details
+                    </span>
+                </div>
+    
+                <div class="row">
+                    <div class="col mb-3 site-text">
+                        <label for="employeeno" class="form-label">Employee No.</label>
+                        <input type="text" class="form-control" id="employeeno" formControlName="employeeno">
+                     <small class="text-danger" *ngIf="!registerForm.get('employeeno').valid && registerForm.get('employeeno').touched">
+                        <small  *ngIf="registerForm.get('employeeno').errors['required']">Please Enter Employee No </small>
+                    </small> 
+                    </div>
+                    <div class="col mb-3">
+                        <label for="design" class="form-label">Designation</label>
+                        <input type="text" class="form-control" id="design" formControlName="design">
+                        <small class="text-danger" *ngIf="!registerForm.get('lastname').valid && registerForm.get('design').touched">
+                            <small  *ngIf="registerForm.get('design').errors['required']">Please Enter Designation</small>
+                        </small> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3 site-text">
+                      <a href=""> <i><label for="photo" class="form-label">Photo</label></i> </a> 
+                        <input type="text" class="form-control" id="photo" formControlName="photo" aria-placeholder="Present Address" style="padding: 2pc;">
+                        </div>
+                        </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="shortname" class="form-label">Short Name (5 Characters)</label>
+                        <input type="text" class="form-control" id="shortname" formControlName="shortname" />
+                        <small class="text-danger"*ngIf="!currencyForm.get('shortname').valid && currencyForm.get('shortname').touched">
+                            <small *ngIf="currencyForm.get('shortname').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row-justify-content-right">
+                    <div class="form-check">
+                        <label for="checkCurrency" class="form-check-label">Local Currency</label>
+                        <input type="checkbox" class="form-check-input" id="checkCurrency" FormControlName="checkCurrency"
+                            placeholder="Enter Password">
+                        <!-- <small class="text-danger" *ngIf="!currencyForm.get('checkbox1').valid && currencyForm.get('examplecheck1').touched"> </small> -->
+                    </div>
+                </div>
+                <fieldset class="border p-2">
+                    <legend>
+                        <h5> Exchange Rate </h5>
+                    </legend>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="purchaseprice" class="form-label">For Purchase Price</label>
+                            <input type="number" class="form-control" id="purchaseprice" formControlName="purchaseprice" />
+                            <small class="text-danger"
+                                *ngIf="!currencyForm.get('purchaseprice').valid && currencyForm.get('purchaseprice').touched">
+                                <small *ngIf="currencyForm.get('purchaseprice').errors['required']">This field is
+                                    required</small>
+                            </small>
+                            <!-- </div> -->
+                        </div>
+    
+                        <!-- <div class="row"> -->
+                        <div class="col mb-3">
+                            <label for="saleprice" class="form-label">For Sale Price</label>
+                            <input type="number" class="form-control" id="saleprice" formControlName="saleprice">
+                            <small class="text-danger"
+                                *ngIf="!currencyForm.get('saleprice').valid && currencyForm.get('saleprice').touched">
+                                <small *ngIf="currencyForm.get('saleprice').errors['required']">This field is
+                                    required</small>
+                            </small>
+                        </div>
+                    </div>
+                    <!-- <table class="table"> -->
+                    <!-- <tbody >  -->
+                    <!-- <tr>
+                                <td><label for="parchaseprice" class="form-label">For Purchase Price</label></td>
+                                <td class="ml-3"><input type="parchaseprice" class="form-control" id="parchaseprice" formControlName="parchaseprice"></td>
+                            </tr>
+                            <br>
+                            <tr>
+                                <td><label for="saleprice" class="form-label">For Purchase Price</label></td>
+                                <td class="ml-3"><input type="saleprice" class="form-control" id="saleprice" formControlName="saleprice"></td>
+                            </tr> -->
+                    <!-- </div> -->
+                    <!-- </tbody>
+                    </table> -->
+                </fieldset>
+                <br>
+                <div class="border p-1 rounded-3 border-black">
+                    <!-- <button type="button"><-</button>
+                        <button type="button"><<</button>
+                        <button type="button">>></button>
+                        <button type="button">-></button> -->
+                    <span id="btn">
+                        <button type="button" class="btn btn-primary" (click)="AddNew()"
+                            [disabled]="currencyForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                        <!-- <button type="button" class="btn btn-secondary" [disabled]="currencyForm.invalid">Update</button> -->
+                        &nbsp; &nbsp;
+                        <!-- <button type="submit" class="btn btn-success" >Save</button> &nbsp; &nbsp; -->
+                        <!-- <button type="button" class="btn btn-danger" (click)="onCancel()"
+                            [disabled]="currencyForm.invalid">Cancel</button> -->
+                    </span>
+                </div>
+            </form>
+       
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </section>
+    

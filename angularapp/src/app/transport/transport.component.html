@@ -1,0 +1,141 @@
+
+<div class="row">
+    <div class="col-md-8">
+        <span class="list">
+            Form-List
+        </span>
+        <div class="border p-2 rounded-4">
+            <table class="table table-bordared">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Contact Person</th>
+                        <th>Phone No</th>
+                        <th>Mobile No</th>
+                        <th>GST No</th>
+                        <th>Mail ID</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let g of gstArr; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{g.name}}</td>
+                        <td>{{g.address}}</td>
+                        <td>{{g.contact}}</td>
+                        <td>{{g.phone}}</td>
+                        <td>{{g.mobile}}</td>
+                        <td>{{g.gstno}}</td>
+                        <td>{{g.mail}}</td>
+                        <td> <button type="button" class="btn btn-primary" (click)="OnEdit(g, i)">Edit</button> </td>
+                        <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                       </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+    
+    <div class="col-md-4">   
+        <h2>Transporter Form</h2>
+        <div class="row justify-content-right">
+            <form class="border p-4 rounded-4" [formGroup]="transporterForm" (ngSubmit)="AddNew()">
+                <div>
+                    <span >
+                        <button class="button">&times;</button>
+                    </span>
+                </div>
+                <div class="col mb-3 bg-black">
+                    <span class="a1">
+                        * Transporter
+                    </span>
+                </div>
+    
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="name" class="form-label">name</label>
+                        <input type="text" class="form-control" id="name" formControlName="name" />
+                        <small class="text-danger"
+                            *ngIf="!transporterForm.get('name').valid && transporterForm.get('name').touched">
+                            <small *ngIf="transporterForm.get('name').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" formControlName="address" />
+                        <small class="text-danger" *ngIf="!transporterForm.get('address').valid && transporterForm.get('address').touched">
+                            <small *ngIf="transporterForm.get('address').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="contact" class="form-label">Contact</label>
+                        <input type="text" class="form-control" id="contact" formControlName="contact" />
+                        <small class="text-danger"*ngIf="!transporterForm.get('contact').valid && transporterForm.get('contact').touched">
+                            <small *ngIf="transporterForm.get('contact').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="phone" class="form-label">Phone No</label>
+                        <input type="text" class="form-control" id="phone" formControlName="phone" />
+                        <small class="text-danger" *ngIf="!transporterForm.get('phone').valid && transporterForm.get('phone').touched">
+                            <small *ngIf="transporterForm.get('phone').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="mobile" class="form-label">Mobile No</label>
+                        <input type="text" class="form-control" id="mobile" formControlName="mobile" />
+                        <small class="text-danger"*ngIf="!transporterForm.get('mobile').valid && transporterForm.get('mobile').touched">
+                            <small *ngIf="transporterForm.get('mobile').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="gstno" class="form-label">GST No</label>
+                        <input type="text" class="form-control" id="gstno" formControlName="gstno" />
+                        <small class="text-danger" *ngIf="!transporterForm.get('gstno').valid && transporterForm.get('gstno').touched">
+                            <small *ngIf="transporterForm.get('gstno').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                
+                    <div class="col mb-4">
+                        <label for="mail" class="form-label">Mail ID</label>
+                        <input type="text" class="form-control" id="mail" #email formControlName="mail" />
+                        <small class="text-danger"*ngIf="!transporterForm.get('mail').valid && transporterForm.get('mail').touched">
+                            <small *ngIf="transporterForm.get('mail').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row-justify-content-right">
+                    <div class="form-check">
+                        <label for="deleted" class="form-check-label">Is deleted</label>
+                        <input type="checkbox" class="form-check-input" id="deleted" FormControlName="deleted"
+                            placeholder="Enter Password">
+                        <!-- <small class="text-danger" *ngIf="!currencyForm.get('checkbox1').valid && currencyForm.get('examplecheck1').touched"> </small> -->
+                    </div>
+                </div>
+               
+                <br>
+                <div class="border p-1 rounded-3 border-black">
+                    
+                    <span id="btn">
+                        <button type="button" class="btn btn-primary" (click)="AddNew()"
+                            [disabled]="transporterForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                        &nbsp; &nbsp;
+                       
+                    </span>
+                </div>
+            </form>
+       
+                    </div>
+                </div>
+  </div>

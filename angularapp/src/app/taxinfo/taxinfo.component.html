@@ -1,0 +1,224 @@
+
+<div class="row">
+    <div class="col-md-8">
+        <span class="list">
+            Form-List
+        </span>
+        <div class="border p-2 rounded-4">
+            <table class="table table-bordared">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Description</th>
+                        <th>Rate</th>
+                        <th>S.G.S.T %</th>
+                        <th>C.G.S.T %</th>
+                        <th>Sale Ledger</th>
+                        <th>CGST Ledger</th>
+                        <th>SGST Ledger</th>
+                        <th>IGST Ledger</th>
+                        <th>Purch Ledger</th>
+                        <th>CGST Ledger</th>
+                        <th>SGST Ledger</th>
+                        <th>IGST Ledger</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let desc of descArr; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{desc.description}}</td>
+                        <td>{{desc.rate}}</td>
+                        <td>{{desc.sgst}}</td>
+                        <td>{{desc.cgst}}</td>
+                        <td>{{desc.saleledger}}</td>
+                        <td>{{desc.sgstledger}}</td>
+                        <td>{{desc.cgstledger}}</td>
+                        <td>{{desc.igstledger}}</td>
+                        <td>{{desc.purchaseledger}}</td>
+                        <td>{{desc.sgstledgers}}</td>
+                        <td>{{desc.cgstledgers}}</td>
+                        <td>{{desc.igstledgers}}</td>
+                        <td> <button type="button" class="btn btn-primary" (click)="OnEdit(desc, i)">Edit</button> </td>
+                        <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                       </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+    
+    <div class="col-md-4">   
+        <h2>TaxInfo Form</h2>
+        <div class="row justify-content-right">
+            <form class="border p-4 rounded-4" [formGroup]="taxInfoForm" (ngSubmit)="AddNew()">
+                <div>
+                    <span >
+                        <button class="button">&times;</button>
+                    </span>
+                </div>
+                <div class="col mb-3 bg-black">
+                    <span class="a1">
+                        * TaxInfo
+                    </span>
+                </div>
+    
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" class="form-control" id="description" formControlName="description" />
+                        <small class="text-danger"
+                            *ngIf="!taxInfoForm.get('description').valid && taxInfoForm.get('description').touched">
+                            <small *ngIf="taxInfoForm.get('description').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="rate" class="form-label">Rate</label>
+                        <input type="text" class="form-control" id="rate" formControlName="rate" />
+                        <small class="text-danger" *ngIf="!taxInfoForm.get('rate').valid && taxInfoForm.get('rate').touched">
+                            <small *ngIf="taxInfoForm.get('rate').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="sgst" class="form-label">S.G.S.T %</label>
+                        <input type="text" class="form-control" id="sgst" formControlName="sgst" />
+                        <small class="text-danger"
+                            *ngIf="!taxInfoForm.get('sgst').valid && taxInfoForm.get('sgst').touched">
+                            <small *ngIf="taxInfoForm.get('sgst').errors['required']">This field is
+                                required</small>
+                        </small>
+                    </div>
+
+                    <div class="col mb-3">
+                        <label for="cgst" class="form-label">C.G.S.T %</label>
+                        <input type="text" class="form-control" id="cgst" formControlName="cgst">
+                        <small class="text-danger"
+                            *ngIf="!taxInfoForm.get('cgst').valid && taxInfoForm.get('cgst').touched">
+                            <small *ngIf="taxInfoForm.get('cgst').errors['required']">This field is
+                                required</small>
+                        </small>
+                    </div>
+                </div>
+                <br>
+                <fieldset class="border p-2" style="background-color: rgb(100, 238, 162);">
+                    <legend>
+                        <h5> Sales Related Tally Ledger </h5>
+                    </legend>
+                    <hr>
+                    <div class="row">
+                        <div class="col mb-4">
+                            <label for="saleledger" class="form-label">Sale Ledger</label>
+                            <input type="text" class="form-control" id="saleledger" formControlName="saleledger" />
+                            <small class="text-danger"
+                                *ngIf="!taxInfoForm.get('saleledger').valid && taxInfoForm.get('saleledger').touched">
+                                <small *ngIf="taxInfoForm.get('saleledger').errors['required']">This field is
+                                    required</small>
+                            </small>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col mb-4">
+                            <label for="sgstledger" class="form-label">SGST Ledger</label>
+                            <input type="text" class="form-control" id="sgstledger" formControlName="sgstledger">
+                            <small class="text-danger"
+                                *ngIf="!taxInfoForm.get('sgstledger').valid && taxInfoForm.get('sgstledger').touched">
+                                <small *ngIf="taxInfoForm.get('sgstledger').errors['required']">This field is
+                                    required</small>
+                            </small>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col mb-4">
+                            <label for="cgstledger" class="form-label">CGST Ledger</label>
+                            <input type="text" class="form-control" id="cgstledger" formControlName="cgstledger">
+                            <small class="text-danger"
+                                *ngIf="!taxInfoForm.get('cgstledger').valid && taxInfoForm.get('cgstledger').touched">
+                                <small *ngIf="taxInfoForm.get('cgstledger').errors['required']">This field is
+                                    required</small>
+                            </small>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col mb-4">
+                            <label for="igstledger" class="form-label">IGST Ledger</label>
+                            <input type="text" class="form-control" id="igstledger" formControlName="igstledger">
+                            <small class="text-danger"
+                                *ngIf="!taxInfoForm.get('igstledger').valid && taxInfoForm.get('igstledger').touched">
+                                <small *ngIf="taxInfoForm.get('igstledger').errors['required']">This field is
+                                    required</small>
+                            </small>
+                        </div>
+                        </div>
+                    
+                </fieldset>
+             <br>
+             <fieldset class="border p-2" style="background-color: rgb(94, 233, 233);">
+                <legend>
+                    <h5>  Purchase Related Tally Ledger </h5>
+                </legend>
+                <hr>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="purchaseledger" class="form-label"> Purch Ledger</label>
+                        <input type="text" class="form-control" id="purchaseledger" formControlName="purchaseledger" />
+                        <small class="text-danger"
+                            *ngIf="!taxInfoForm.get('purchaseledger').valid && taxInfoForm.get('purchaseledger').touched">
+                            <small *ngIf="taxInfoForm.get('purchaseledger').errors['required']">This field is
+                                required</small>
+                        </small>
+                    </div>
+                    </div>
+           
+                    <div class="row">
+                    <div class="col mb-4">
+                        <label for="sgstledgers" class="form-label">SGST Ledger</label>
+                        <input type="text" class="form-control" id="sgstledgers" formControlName="sgstledgers">
+                        <small class="text-danger"
+                            *ngIf="!taxInfoForm.get('sgstledgers').valid && taxInfoForm.get('sgstledgers').touched">
+                            <small *ngIf="taxInfoForm.get('sgstledgers').errors['required']">This field is
+                                required</small>
+                        </small>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col mb-4">
+                        <label for="cgstledgers" class="form-label">CGST Ledger</label>
+                        <input type="text" class="form-control" id="cgstledgers" formControlName="cgstledgers">
+                        <small class="text-danger"
+                            *ngIf="!taxInfoForm.get('cgstledgers').valid && taxInfoForm.get('cgstledgers').touched">
+                            <small *ngIf="taxInfoForm.get('cgstledgers').errors['required']">This field is
+                                required</small>
+                        </small>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col mb-4">
+                        <label for="igstledgers" class="form-label">IGST Ledger</label>
+                        <input type="text" class="form-control" id="igstledgers" formControlName="igstledgers">
+                        <small class="text-danger"
+                            *ngIf="!taxInfoForm.get('igstledgers').valid && taxInfoForm.get('igstledgers').touched">
+                            <small *ngIf="taxInfoForm.get('igstledgers').errors['required']">This field is
+                                required</small>
+                        </small>
+                    </div>
+                    </div>
+                
+            </fieldset>
+                
+                <br>
+                <div class="border p-1 rounded-3 border-black">
+                    <span id="btn">
+                        <button type="button" class="btn btn-primary" (click)="AddNew()"
+                            [disabled]="taxInfoForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                        &nbsp; &nbsp;
+                       
+                    </span>
+                </div>
+            </form>
+       
+                    </div>
+                </div>
+  </div>

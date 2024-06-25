@@ -1,0 +1,207 @@
+   <div class="row">
+    <div class="col-md-8">
+    <span class="list">
+        Form-List
+    </span>
+    <div class="border p-2 rounded-4">
+        <table class="table table-bordared">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Ref.Code</th>
+                    <th>Short Name</th>
+                    <th>Last Ref No.</th>
+                    <th>Party Name</th>
+                    <th>Tally Ledger</th>
+                    <th>Pin Code</th>
+                    <th>Address</th>
+                    <th>Country</th>
+                    <th>State</th>
+                    <th>Owner Name</th> 
+                    <th>Phone</th>
+                    <th>Mobile</th>       
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr *ngFor="let cou of countries; index as i">
+                    <td>{{i+1}}</td>
+                    <td>{{cou.refcode}}</td>
+                    <td>{{cou.shortname}}</td>
+                    <td>{{cou.lastrefno}}</td>
+                    <td>{{cou.partyname}}</td>
+                    <td>{{cou.tallyledger}}</td>
+                    <td>{{cou.pincode}}</td>
+                    <td>{{cou.address}}</td>
+                    <td>{{cou.country}}</td>
+                    <td>{{cou.state}}</td>
+                    <td>{{cou.ownername}}</td>
+                    <td>{{cou.phone}}</td>
+                    <td>{{cou.mobile}}</td>
+
+                    <td> <button type="button" class="btn btn-primary" (click)="OnEdit(cou, i)">Edit</button> </td>
+                    <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                   </tr>
+            </tbody>
+        </table>
+        </div>
+</div>
+    <div class="col-md-4">
+    <h2>Customer Details -> Party details</h2>
+
+            <div class="justify-content-right">
+                <form class="border p-2 rounded-4" [formGroup]="customerInfoForm" (ngSubmit)="AddNew()">
+                    <div>
+                        <span >
+                            <button class="button">&times;</button>
+                        </span>
+                    </div>
+                    <div class="col mb-3 bg-black">
+                        <span class="a1">
+                            * Customer Information
+                        </span>
+                    </div>
+                <hr>
+                <header class="headers" >
+                    <nav>
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="customerinformation/">Party Details</a></li>
+                            <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/custbilldetails">Billing Details</a></li>
+                            <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/custcontacdetails">Contact Details</a></li>  
+                        </ul>
+                    </nav>
+                </header> 
+                <hr>
+                <div class="row">
+                    <div class="col mb-2">
+                        <label for="refcode" class="form-label">Ref. Code</label>
+                        <input type="text" class="form-control" id="refcode" formControlName="refcode"/>
+                     <small class="text-danger" *ngIf="!customerInfoForm.get('refcode').valid && customerInfoForm.get('refcode').touched">
+                        <small  *ngIf="customerInfoForm.get('refcode').errors['required']">Please Enter Ref Code</small>
+                    </small> 
+                    </div>
+                    <div class="col mb-2">
+                        <label for="shortname" class="form-label">Short Name</label>
+                        <input type="text" class="form-control" id="shortname" formControlName="shortname" />
+                        <small class="text-danger" *ngIf="!customerInfoForm.get('shortname').valid && customerInfoForm.get('shortname').touched">
+                            <small  *ngIf="customerInfoForm.get('shortname').errors['required']">Please Enter Short Name</small>
+                        </small> 
+                    </div>
+                    <div class="col mb-2">
+                        <label for="lastrefno" class="form-label">Last Ref No.</label>
+                        <input type="text" class="form-control" id="lastrefno" placeholder="0" formControlName="lastrefno" />
+                        <small class="text-danger" *ngIf="!customerInfoForm.get('lastrefno').valid && customerInfoForm.get('lastrefno').touched">
+                            <small  *ngIf="customerInfoForm.get('lastrefno').errors['required']">Please Enter Last Ref No.</small>
+                        </small> 
+                    </div>
+                </div>
+                
+            <div class="row">
+                <div class="col mb-4">
+                    <label for="partyname" class="form-label">Party Name</label>
+                    <input type="text" class="form-control" id="partyname" formControlName="partyname" />
+                    <small class="text-danger"
+                        *ngIf="!customerInfoForm.get('partyname').valid && customerInfoForm.get('partyname').touched">
+                        <small *ngIf="customerInfoForm.get('partyname').errors['required']">This field is required</small>
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-6">
+                    <label for="tallyledger" class="form-label">TALLY Ledger</label>
+                    <input type="text" class="form-control" id="tallyledger" formControlName="tallyledger" />
+                    <small class="text-danger"
+                        *ngIf="!customerInfoForm.get('tallyledger').valid && customerInfoForm.get('tallyledger').touched">
+                        <small *ngIf="customerInfoForm.get('tallyledger').errors['required']">This field is required</small>
+                    </small>
+                </div>
+                    <div class="col mb-4">
+                        <label for="pincode" class="form-label">PIN Code</label>
+                        <input type="pincode" class="form-control" id="pincode" formControlName="pincode" />
+                        <small class="text-danger" *ngIf="!customerInfoForm.get('pincode').valid && customerInfoForm.get('pincode').touched">
+                            <small  *ngIf="customerInfoForm.get('pincode').errors['required']">Please Enter Pin Code</small>
+                        </small> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="address" class="form-label" >Address</label>
+                        <input type="address" class="form-control" id="address" formControlName="address" />
+                        <small class="text-danger"
+                        *ngIf="!customerInfoForm.get('address').valid && customerInfoForm.get('address').touched">
+                        <small *ngIf="customerInfoForm.get('address').errors['required']">This field is required</small>
+                    </small>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="country">Country</label>
+                        <select  id="country" class="form-control" placeholder="Country" formControlName="country">
+                            <option value="Select">--Select--</option>
+                            <option value="India">INDIA</option>
+                            <option value="Canada">CANADA</option>
+                            <option value="Germany">GERMANY</option>
+                            <option value="Australia">AUSTRALIA</option>
+                        </select>
+                        <small class="text-danger"
+                        *ngIf="!customerInfoForm.get('country').valid && customerInfoForm.get('country').touched">
+                        This field is required</small>
+                    </div>
+                <div class="col mb-6">
+                    <label for="state">State</label>
+                    <select  id="state" class="form-control" placeholder="state" formControlName="state">
+                        <option value="Select">--Select--</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Gujarat">Germany</option>
+                        <option value="Andhra">Andhra Pradesh</option>
+                    </select>
+                        <small class="text-danger"
+                        *ngIf="!customerInfoForm.get('state').valid && customerInfoForm.get('state').touched">
+                        <small *ngIf="customerInfoForm.get('state').errors['required']">This field is required</small>
+                    </small>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="ownername" class="form-label">Owner Name</label>
+                        <input type="text" class="form-control" id="ownername" formControlName="ownername" />
+                        <small class="text-danger" *ngIf="!customerInfoForm.get('ownername').valid && customerInfoForm.get('ownername').touched">
+                            <small *ngIf="customerInfoForm.get('ownername').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-2">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="number" class="form-control" id="phone" formControlName="phone" />
+                        <small class="text-danger"*ngIf="!customerInfoForm.get('phone').valid && customerInfoForm.get('phone').touched">
+                            <small *ngIf="customerInfoForm.get('phone').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                    <div class="col mb-2">
+                        <label for="mobile" class="form-label">Mobile</label>
+                        <input type="number" class="form-control" id="mobile" formControlName="mobile" />
+                        <small class="text-danger" *ngIf="!customerInfoForm.get('mobile').valid && customerInfoForm.get('mobile').touched">
+                            <small *ngIf="customerInfoForm.get('mobile').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                    <br>
+                    <div class="border p-1 rounded-3 border-black">
+                   
+                        <span id="btn">
+                            <button type="button" class="btn btn-primary" (click)="AddNew()"
+                                [disabled]="customerInfoForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                            &nbsp; &nbsp;
+                            
+                        </span>
+                    </div>
+     </div>
+    
+            </form>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

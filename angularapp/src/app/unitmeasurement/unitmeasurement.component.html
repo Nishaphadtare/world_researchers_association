@@ -1,0 +1,99 @@
+<!-- <p>unitmeasurement works!</p> -->
+<!-- <p>brandname works!</p> -->
+<div class="row">
+<div class="col-md-8">
+    <span class="list">
+        Form-List
+    </span>
+    <div class="border p-2 rounded-4">
+        <table class="table table-bordared">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Description</th>
+                    <th>Reference for GST</th>
+                    
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                <tr *ngFor="let measure of measurements; index as i">
+                    <td>{{i+1}}</td>
+                    <td>{{measure.description}}</td>
+                    <td>{{measure.reference}}</td>
+                    
+                    
+                    <td> <button type="button" class="btn btn-primary" (click)="OnEdit(measure, i)">Edit</button> </td>
+                    <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                   </tr>
+            </tbody>
+        </table>
+        </div>
+</div>
+<div class="col-md-4">
+    <h2>Unit Measurement</h2>
+    <div class="row justify-content-right">
+        <form class="border p-4 rounded-4" [formGroup]="unitMeasurementForm" (ngSubmit)="AddNew()">
+            <div>
+                <span >
+                    <button class="button">&times;</button>
+                </span>
+            </div>
+            <div class="col mb-3 bg-black">
+                <span class="a1">
+                    * Unit Of Measurement 
+                </span>
+            </div>
+
+            <div class="row">
+                <div class="col mb-4">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" formControlName="description" />
+                    <small class="text-danger"
+                        *ngIf="!unitMeasurementForm.get('description').valid && unitMeasurementForm.get('description').touched">
+                        <small *ngIf="unitMeasurementForm.get('description').errors['required']">This field is required</small>
+                    </small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col mb-6">
+                    <label for="reference">Reference for GST</label>
+                    <select  id="reference" class="form-control" placeholder="reference" formControlName="reference">
+                        <option value="Select">--Select--</option>
+                        <option value="Kg">KG</option>
+                        <option value="G">Gram</option>
+                        <option value="mg">MG</option>
+                        <option value="cg">CG</option>
+                        <option value="dg">DG</option>
+                        <option value="ml">ML</option>
+                       
+                    </select>
+                        <small class="text-danger"
+                        *ngIf="!unitMeasurementForm.get('reference').valid && unitMeasurementForm.get('reference').touched">
+                        <small *ngIf="unitMeasurementForm.get('reference').errors['required']">This field is required</small>
+                    </small>
+                </div>
+            </div>
+            <br>
+
+            <div class="row-justify-content-right">
+                <div class="form-check">
+                    <label for="checkdeleted" class="form-check-label">Is Deleted ?</label>
+                    <input type="checkbox" class="form-check-input" id="checkdeleted" FormControlName="checkdeleted"
+                        placeholder="Enter Password">
+                    <!-- <small class="text-danger" *ngIf="!currencyForm.get('checkbox1').valid && currencyForm.get('examplecheck1').touched"> </small> -->
+                </div>
+            </div>
+            <br>
+            <div class="border p-1 rounded-3 border-black">
+                
+                <span id="btn">
+                    <button type="button" class="btn btn-primary" (click)="AddNew()"
+                        [disabled]="unitMeasurementForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                    &nbsp; &nbsp;
+                </span>
+            </div>
+            </form>
+    </div>
+</div>
+</div>
+    

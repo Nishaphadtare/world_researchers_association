@@ -1,0 +1,183 @@
+
+<div class="row">
+    <div class="col-md-8">
+        <span class="list">
+            Form-List
+        </span>
+        <div class="border p-2 rounded-4">
+            <table class="table table-bordared">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>PIN Code </th>
+                        <th>Country</th>
+                        <th>GST No</th>
+                        <th>state</th>
+                        <th>Phone (L/L)</th>
+                        <th>Mobile No</th>
+                        <th>E-mail</th>
+                        <th>PAN No</th>
+                        
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let coun of countries; index as i">
+                        <td>{{i+1}}</td>
+                        <td>{{coun.name}}</td>
+                        <td>{{coun.address}}</td>
+                        <td>{{coun.pincode}}</td>
+                        <td>{{coun.country}}</td>
+                        <td>{{coun.gstno}}</td>
+                        <td>{{coun.state}}</td>
+                        <td>{{coun.phone}}</td>
+                        <td>{{coun.mobile}}</td>
+                        <td>{{coun.email}}</td>
+                        <td>{{coun.pancode}}</td>
+                        <td> <button type="button" class="btn btn-primary" (click)="OnEdit(coun, i)">Edit</button> </td>
+                        <td> <button type="button" class="btn btn-danger" (click)="OnDelete(i)">Delete</button> </td>
+                       </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+    
+    <div class="col-md-4">   
+        <h2>Godown Form</h2>
+        <div class="row justify-content-right">
+            <form class="border p-4 rounded-4" [formGroup]="godownForm" (ngSubmit)="AddNew()">
+                <div>
+                    <span >
+                        <button class="button">&times;</button>
+                    </span>
+                </div>
+                <div class="col mb-3 bg-black">
+                    <span class="a1">
+                        * Godown
+                    </span>
+                </div>
+    
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="name" class="form-label">name</label>
+                        <input type="text" class="form-control" id="name" formControlName="name" />
+                        <small class="text-danger"
+                            *ngIf="!godownForm.get('name').valid && godownForm.get('name').touched">
+                            <small *ngIf="godownForm.get('name').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" formControlName="address" />
+                        <small class="text-danger" *ngIf="!godownForm.get('address').valid && godownForm.get('address').touched">
+                            <small *ngIf="godownForm.get('address').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <label for="pincode" class="form-label">PIN Code</label>
+                        <input type="text" class="form-control" id="pincode" formControlName="pincode" />
+                        <small class="text-danger"*ngIf="!godownForm.get('pincode').valid && godownForm.get('pincode').touched">
+                            <small *ngIf="godownForm.get('pincode').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                    <div class="col mb-3">
+                    <div class="row-justify-content-right">
+                        <div class="form-check">
+                            <label for="set" class="form-check-label">Set as Main Delivery Address</label>
+                            <input type="checkbox" class="form-check-input" id="set" FormControlName="set"
+                                placeholder="Enter Password">
+                            <!-- <small class="text-danger" *ngIf="!currencyForm.get('checkbox1').valid && currencyForm.get('examplecheck1').touched"> </small> -->
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" class="form-control" id="country" formControlName="country" />
+                        <small class="text-danger" *ngIf="!godownForm.get('country').valid && godownForm.get('country').touched">
+                            <small *ngIf="godownForm.get('country').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                    <div class="col mb-4">
+                        <label for="gstno" class="form-label">GST No</label>
+                        <input type="text" class="form-control" id="gstno" formControlName="gstno" />
+                        <small class="text-danger" *ngIf="!godownForm.get('gstno').valid && godownForm.get('gstno').touched">
+                            <small *ngIf="godownForm.get('gstno').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="state" class="form-label">State</label>
+                        <input type="text" class="form-control" id="state" formControlName="state" />
+                        <small class="text-danger" *ngIf="!godownForm.get('state').valid && godownForm.get('state').touched">
+                            <small *ngIf="godownForm.get('state').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="phone" class="form-label">Phone (L/L)</label>
+                        <input type="text" class="form-control" id="phone" formControlName="phone" />
+                        <small class="text-danger" *ngIf="!godownForm.get('phone').valid && godownForm.get('phone').touched">
+                            <small *ngIf="godownForm.get('phone').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                
+                    <div class="col mb-4">
+                        <label for="mobile" class="form-label">Mobile No</label>
+                        <input type="text" class="form-control" id="mobile" formControlName="mobile" />
+                        <small class="text-danger"*ngIf="!godownForm.get('mobile').valid && godownForm.get('mobile').touched">
+                            <small *ngIf="godownForm.get('mobile').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mb-4">
+                        <label for="email" class="form-label">Mail ID</label>
+                        <input type="text" class="form-control" id="email" #email formControlName="email" />
+                        <small class="text-danger"*ngIf="!godownForm.get('email').valid && godownForm.get('email').touched">
+                            <small *ngIf="godownForm.get('email').errors['required']">This field is required</small>
+                        </small>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-4">
+                            <label for="pancode" class="form-label">PAN No.</label>
+                            <input type="text" class="form-control" id="pancode" #email formControlName="pancode" />
+                            <small class="text-danger"*ngIf="!godownForm.get('pancode').valid && godownForm.get('pancode').touched">
+                                <small *ngIf="godownForm.get('pancode').errors['required']">This field is required</small>
+                            </small>
+                        </div>
+                        </div>
+                
+                <div class="row-justify-content-right">
+                    <div class="form-check">
+                        <label for="deleted" class="form-check-label">Is deleted</label>
+                        <input type="checkbox" class="form-check-input" id="deleted" FormControlName="deleted"
+                            placeholder="Enter Password">
+                        <!-- <small class="text-danger" *ngIf="!currencyForm.get('checkbox1').valid && currencyForm.get('examplecheck1').touched"> </small> -->
+                    </div>
+                </div>
+               
+                <br>
+                <div class="border p-1 rounded-3 border-black">
+                    
+                    <span id="btn">
+                        <button type="button" class="btn btn-primary" (click)="AddNew()"
+                            [disabled]="godownForm.invalid">{{editMode? 'Update': 'Add New'}}</button> &nbsp; &nbsp;
+                        &nbsp; &nbsp;
+                       
+                    </span>
+                </div>
+            </form>
+       
+                    </div>
+                </div>
+  </div>

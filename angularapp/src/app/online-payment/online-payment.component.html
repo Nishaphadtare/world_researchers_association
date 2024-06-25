@@ -1,0 +1,49 @@
+<!-- <p>online-payment works!</p>
+
+<div class="container1">
+    <div>
+        <form (ngSubmit)="Payment(myForm)" #myForm="ngForm">
+            <div class="row">
+                <div class="col mb-3">
+                 <label for="email" class="form-label"></label>
+                 <div class="form-group">
+                <input type="password" class="form-control" id="pwd" formControlName="pwd" placeholder="Enter password">
+                    <label for="location">Your Location</label>
+                    <select name="location" id="location" name="location" class="form-control" [ngModel]="defaultValue">
+                        <option value="india">India</option>
+                        <option value="USA">USA</option>
+                        <option value="Japan">Japan</option>
+                        <option value="London">London</option>
+                    </select>
+                </div>
+                 </div>
+             </div>
+             <div class="row">
+                 <div class="col mb-3">
+                     <div class="form-group">
+                     <label for="formlable" class="formlabel">Payment For</label>
+                   <input type="password" class="form-control" id="pwd" formControlName="pwd" placeholder="Enter password"> 
+                        <label for="paymentfor">Payment For</label>
+                        <select name="paymentfor" id="paymentfor" name="paymentfor" class="form-control" placeholder="--Select--">
+                            <option value="Angular">Angular</option>
+                            <option value="CSS">CSS</option>
+                            <option value="Javascript">Javascript</option>
+                            <option value="HTML">HTML</option>
+                        </select>
+                    </div>
+                 <small class="text-danger" *ngIf="!loginForm.get('pwd').valid && loginForm.get('pwd').touched">
+                    <small  *ngIf="loginForm.get('pwd').errors['required']">Please Enter password</small>
+                </small>    
+                 </div>
+             </div>
+             <div class="row">
+                <div class="col-6 offset-3">
+                    <div class="d-grid">
+                        <button type="button" [disabled]="paymentForm.invalid" class="btn btn-primary">Payment</button>
+            </div>
+        </div>
+    </div>
+             <button>
+        </form>
+    </div>
+</div> -->

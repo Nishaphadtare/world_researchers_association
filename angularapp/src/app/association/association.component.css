@@ -1,0 +1,54 @@
+/* h6{
+    justify-content: center;
+    color: rgb(3, 3, 244);
+    margin-left: 45px;
+} */
+.container{
+    /* text-align: center; */
+    margin-left: 500px;
+    text-align: justify;
+}
+h3{
+    color: rgb(9, 101, 175);
+    /* margin-left: 60px; */
+    /* margin-top: 20px; */
+    /* font-weight: bolder; */
+}
+ul{
+   margin-top: 30px; 
+   text-align: justify;
+   font-size: 17px;
+   color: blue;
+   padding-inline: 20px;
+}
+#i{
+    margin-left: 30px;
+    font-weight: bolder;
+}
+li{
+    margin-top: 10px;
+    font-weight: bolder;
+}
+#red{
+    text-align: justify;
+    font-size: 16px;
+    font-weight: bold;
+    color: Maroon;
+}
+.pp{
+    text-align: justify;
+    text-align: justify; font-size: 13px; color: blue;
+}
+#blue{
+    text-align: justify;
+    color: blue;
+}
+#blue1{
+    text-align: justify;
+    color: blue;
+}
+#bold{
+        text-align: justify;
+        /* font-size: 15px; */
+        font-weight: bold;
+}

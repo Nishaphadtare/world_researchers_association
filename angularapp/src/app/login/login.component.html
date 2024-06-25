@@ -1,0 +1,46 @@
+<!-- <p>login works!</p> -->
+<div class="container">
+   <!-- <div class="col md-12 justify-content-center"> -->
+<form class="border p-3 rounded-3" [formGroup]="loginForm" (ngSubmit)="loginSubmitted()">
+    <div class="row g-0">
+        <div class="col text-center p-2 mb-3 bg-light">
+            <span class="fs-3">Login</span>
+        </div>
+    </div>
+     <div class="row">
+           <div class="col mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" formControlName="email" #email placeholder="Enter Email">
+            <small class="text-danger" *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">
+                <small *ngIf="loginForm.get('email').errors['required']">Please Enter valid email</small>
+            </small> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="pwd" class="form-label">Password</label>
+                <input type="password" class="form-control" id="pwd" formControlName="pwd" placeholder="Enter password">
+            <small class="text-danger" *ngIf="!loginForm.get('pwd').valid && loginForm.get('pwd').touched">
+               <small  *ngIf="loginForm.get('pwd').errors['required']">Please Enter password</small>
+           </small>    
+            </div>
+        </div>
+        <div class="form-check">
+            <label for="checkbox1" class="form-check-label">check me out</label>
+            <input type="checkbox" class="form-check-input" id="checkbox1" fromControlName="checkbox1" placeholder="Enter Password">
+            <!-- <small class="text-danger" *ngIf="!loginForm.get('checkbox1').valid && loginForm.get('examplecheck1').touched"> </small> -->
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="d-grid">
+                    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+        </div>
+    </div>
+</div>
+<div class="card-footer text-right">
+    <small>Don't have Account?<a routerLink="../registration">Registration</a></small>
+</div>
+</form>
+</div>
+<!-- </div> -->
